@@ -55,3 +55,15 @@ cached-antora-playbook.yml
 node_modules
 
 .env
+.flaskenv
+
+.idea/
+.vscode/
+.venv*/
+venv*/
+__pycache__/
+dist/
+.coverage*
+htmlcov/
+.tox/
+docs/_build/

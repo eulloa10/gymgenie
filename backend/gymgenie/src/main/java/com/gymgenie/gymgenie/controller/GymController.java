@@ -15,14 +15,14 @@ public class GymController {
     private GeminiApiService externalApiService;
 
     @GetMapping("/fetch-data")
-    // public String fetchData() {
-    //     return externalApiService.fetchDataFromExternalApi();
-    // }
-
-    public String fetchData(@RequestParam int age,
-                        @RequestParam double height,
-                        @RequestParam double weight,
-                        @RequestParam String gender) {
-    return externalApiService.fetchDataFromExternalApi(age, height, weight, gender);
+    public String fetchData() {
+        return externalApiService.fetchDataFromExternalApi();
     }
+
+    // public String fetchData(@RequestParam int age,
+    //                     @RequestParam double height,
+    //                     @RequestParam double weight,
+    //                     @RequestParam String gender) {
+    // return externalApiService.fetchDataFromExternalApi(age, height, weight, gender);
+    // }
 }
