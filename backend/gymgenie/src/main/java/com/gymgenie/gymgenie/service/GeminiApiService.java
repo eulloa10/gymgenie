@@ -6,6 +6,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.google.cloud.vertexai.VertexAI;
 import com.google.cloud.vertexai.api.GenerateContentResponse;
+import com.google.cloud.vertexai.generativeai.preview.ChatSession;
 import com.google.cloud.vertexai.generativeai.preview.ContentMaker;
 import com.google.cloud.vertexai.generativeai.preview.GenerativeModel;
 import com.google.cloud.vertexai.generativeai.preview.PartMaker;
@@ -24,17 +25,20 @@ public class GeminiApiService {
     public String fetchDataFromExternalApi(int age, double height, double weight, String gender) {
       // Replace "https://api.example.com/data" with the actual URL of the external API
       try (VertexAI vertexAI = new VertexAI(projectId, location)) {
-        byte[] imageBytes = Base64.getDecoder().decode(dataImageBase64);
+        GenerateContentResponse response;
 
-        GenerativeModel model = new GenerativeModel("gemini-pro-vision", vertexAI);
-        GenerateContentResponse response = model.generateContent(
-            ContentMaker.fromMultiModalData(
-                "What is this image about?",
-                PartMaker.fromMimeTypeAndData("image/jpg", imageBytes)
-            ));
+        GenerativeModel model = new GenerativeModel(modelName, vertexAI);
+        ChatSession chatSession = new ChatSession(model);
 
+        response = chatSession.sendMessage("Hello.");
         System.out.println(ResponseHandler.getText(response));
-        // return restTemplate.getForObject(apiUrl, String.class);
+
+        response = chatSession.sendMessage("What are all the colors in a rainbow?");
+        System.out.println(ResponseHandler.getText(response));
+
+        response = chatSession.sendMessage("Why does it appear when it rains?");
+        System.out.println(ResponseHandler.getText(response));
       }
-  }
+        // return restTemplate.getForObject(apiUrl, String.class);
+    }
 }
