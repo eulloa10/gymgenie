@@ -1,4 +1,4 @@
-// src/app/pages/create-plan.tsx
+// src/pages/create-plan.tsx
 import Head from 'next/head';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
@@ -17,17 +17,25 @@ const CreatePlan: React.FC = () => {
   };
 
   const handleAPICall = async () => {
-    let prompt = `Return as JSON: What is an ideal fitness and diet plan for a ${age} year old, ${gender}, that weights ${weight} lbs, is ${Math.floor(
-      height / 12)} ft ${height % 12} in, has a goal of ${goal}, in the following timeframe ${timeFrame} weeks?`;
-    const response = await fetch('https://gymgeniepy.onrender.com/generate_text_stream', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ prompt }),
-    });
-    const data = await response.text();
-    console.log(data);
+    let prompt = `Give us one ideal fitness and one ideal diet plan for a ${age} year old, ${gender}, that weights ${weight} lbs, is ${Math.floor(
+      height / 12)} ft ${height % 12} in, has a goal of ${goal}, in the following timeframe ${timeFrame} weeks. Give the response in less than 400 tokens.`;
+    try {
+      const response = await fetch('https://gymgeniepy.onrender.com/generate_text_stream', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          "response_mime_type": "application/text",
+        },
+        body: JSON.stringify({ prompt }),
+      });
+      const data = await response.text();
+      router.push({
+        pathname: '/results',
+        query: { data },
+      });
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (

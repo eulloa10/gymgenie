@@ -31,8 +31,9 @@ const Home: React.FC = () => {
         </nav>
       </header>
 
-      <main className="flex flex-col justify-center items-center h-screen bg-genie-light text-white pt-16">
-        <h2 className="text-4xl font-bold mb-4">Achieve Your Fitness Goals</h2>
+      <main className="flex flex-col justify-center items-center h-screen bg-genie-light text-white pt-16"
+      style={{ backgroundImage: 'url("/gymgenie.png")', backgroundSize: '35% 90%', backgroundPosition: 'center' }}>
+        <h2 className="text-4xl font-bold mb-4">Achieve Your Fitness Goals with the Genie</h2>
         <p className="mb-8 text-lg">Let's create a custom plan for you</p>
         <button
           onClick={handleCreatePlanClick}
