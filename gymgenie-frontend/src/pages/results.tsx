@@ -9,7 +9,7 @@ const Results: React.FC = () => {
     <div>
       <Head>
         <title>Results - Gym Genie</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/icon.ico" />
       </Head>
 
       <header className="bg-genie-dark text-white fixed w-full z-10 top-0 shadow-md">
@@ -29,7 +29,7 @@ const Results: React.FC = () => {
       <main className="flex flex-col justify-center items-center h-80vh bg-genie-light text-white pt-16 overflow-auto">
         <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
           <h2 className="bg-white text-black text-2xl font-bold mb-4">Your Plan</h2>
-          <pre className="bg-white text-black whitespace-pre-wrap">{data && data.replace(/\*/g, '')}</pre>
+          <pre className="bg-white text-black whitespace-pre-wrap">{typeof data === 'string' && data.replace(/\*/g, '')}</pre>
         </div>
       </main>
 

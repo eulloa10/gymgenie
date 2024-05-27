@@ -42,7 +42,7 @@ const CreatePlan: React.FC = () => {
     <div>
       <Head>
         <title>Create Your Plan - Gym Genie</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/icon.ico" />
       </Head>
 
       <header className="bg-genie-dark text-white fixed w-full z-10 top-0 shadow-md">

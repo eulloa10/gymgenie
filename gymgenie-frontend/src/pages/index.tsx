@@ -17,7 +17,7 @@ const Home: React.FC = () => {
     <div>
       <Head>
         <title>Gym Genie</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/icon.ico" />
       </Head>
 
       <header className="bg-genie-dark text-white fixed w-full z-10 top-0 shadow-md">
@@ -34,7 +34,7 @@ const Home: React.FC = () => {
       <main className="flex flex-col justify-center items-center h-screen bg-genie-light text-white pt-16"
       style={{ backgroundImage: 'url("/gymgenie.png")', backgroundSize: '35% 90%', backgroundPosition: 'center' }}>
         <h2 className="text-4xl font-bold mb-4">Achieve Your Fitness Goals with the Genie</h2>
-        <p className="mb-8 text-lg">Let's create a custom plan for you</p>
+        <p className="mb-8 text-lg">Let&apos;s create a custom plan for you</p>
         <button
           onClick={handleCreatePlanClick}
           className="bg-genie hover:bg-genie-dark text-white font-semibold py-2 px-6 rounded"
